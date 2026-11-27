@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Krishna Anandam lead slider (Next.js)
 
-## Getting Started
+Next.js static export of `source/index.html`, deployed to Cloudflare Pages at https://lead.krishnaanandam.com.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sync changes from the original HTML
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Edit `source/index.html`, then regenerate the extracted CSS, markup and JavaScript:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+node scripts/sync-from-html.mjs
+npm run build
+```
 
-## Learn More
+The generator writes:
 
-To learn more about Next.js, take a look at the following resources:
+- `app/globals.css` — styles from the original `<style>` block
+- `lib/legacy-page.ts` — body markup rendered by `app/page.tsx`
+- `public/legacy.js` — original inline JavaScript loaded after hydration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- GitHub: `pariflex1/ka-lead-next`
+- Cloudflare Pages project: `ka-lead-form` (already owns `lead.krishnaanandam.com` and `www.lead.krishnaanandam.com`)
+- Build command: `npm run build`
+- Build output: `out`
 
-## Deploy on Vercel
+Direct deploy from this machine:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+npx wrangler pages deploy out --project-name ka-lead-form --branch main
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cloudflare Pages Git integration can be connected to this repository with build command `npm run build` and build output `out` if automatic deploys on push are needed.
