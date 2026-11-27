@@ -27,9 +27,19 @@ The generator writes:
 ## Deployment
 
 - GitHub: `pariflex1/ka-lead-next`
-- Cloudflare Pages project: `ka-lead-form` (already owns `lead.krishnaanandam.com` and `www.lead.krishnaanandam.com`)
+- Cloudflare Pages project: `ka-lead-form`
+- Custom domains: `lead.krishnaanandam.com`, `www.lead.krishnaanandam.com`
 - Build command: `npm run build`
 - Build output: `out`
+
+DNS records required in the `krishnaanandam.com` zone (proxied CNAMEs):
+
+| Name | Target |
+| --- | --- |
+| `lead` | `ka-lead-form.pages.dev` |
+| `www.lead` | `ka-lead-form.pages.dev` |
+
+Do not add a `wrangler.toml` with `pages_build_output_dir` to this repository: Wrangler treats it as the source of truth and removes the Pages custom domains on deploy.
 
 Direct deploy from this machine:
 
