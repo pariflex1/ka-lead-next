@@ -10,9 +10,7 @@ export const metadata: Metadata = {
     title: "Krishna Anandam – Villas & Plots in Jhansi",
     description:
       "Premium gated community at Badagaon, Jhansi. JDA approved · RERA registered.",
-    images: [
-      "https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/og.webp",
-    ],
+    images: ["https://ka-lead-next.pages.dev/images/og.webp"],
   },
   other: {
     "theme-color": "#0a0a0a",
@@ -32,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <link
           rel="preload"
           as="image"
-          href="https://pariflex1.github.io/ka-lead-form/images/day.webp"
+          href="/images/day.webp"
           fetchPriority="high"
         />
         {children}

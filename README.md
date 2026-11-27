@@ -18,6 +18,8 @@ node scripts/sync-from-html.mjs
 npm run build
 ```
 
+Images are stored in `source/images` and copied to `public/images`, so all page images are served from the same Cloudflare Pages domain.
+
 The generator writes:
 
 - `app/globals.css` — styles from the original `<style>` block
