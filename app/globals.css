@@ -1174,3 +1174,5 @@ label:focus-visible {
     pointer-events: none;
     text-shadow: 0 1px 4px #000
 }
+
+.legacy-root { display: contents; }

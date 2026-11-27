@@ -15,7 +15,7 @@ const scripts = [...bodyMatch[1].matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)]
 
 const body = bodyMatch[1].replace(/<script[^>]*>[\s\S]*?<\/script>/g, '')
 
-const css = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');\n\n${styles.trim()}\n`
+const css = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');\n\n${styles.trim()}\n\n.legacy-root { display: contents; }\n`
 
 writeFileSync('app/globals.css', css)
 writeFileSync('public/legacy.js', `${scripts.trim()}\n`)
