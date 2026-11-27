@@ -27,7 +27,7 @@ The generator writes:
 ## Deployment
 
 - GitHub: `pariflex1/ka-lead-next`
-- Cloudflare Pages project: `ka-lead-form`
+- Cloudflare Pages project: `ka-lead-next` (https://ka-lead-next.pages.dev)
 - Custom domains: `lead.krishnaanandam.com`, `www.lead.krishnaanandam.com`
 - Build command: `npm run build`
 - Build output: `out`
@@ -36,8 +36,8 @@ DNS records required in the `krishnaanandam.com` zone (proxied CNAMEs):
 
 | Name | Target |
 | --- | --- |
-| `lead` | `ka-lead-form.pages.dev` |
-| `www.lead` | `ka-lead-form.pages.dev` |
+| `lead` | `ka-lead-next.pages.dev` |
+| `www.lead` | `ka-lead-next.pages.dev` |
 
 Do not add a `wrangler.toml` with `pages_build_output_dir` to this repository: Wrangler treats it as the source of truth and removes the Pages custom domains on deploy.
 
@@ -45,7 +45,7 @@ Direct deploy from this machine:
 
 ```bash
 npm run build
-npx wrangler pages deploy out --project-name ka-lead-form --branch main
+npx wrangler pages deploy out --project-name ka-lead-next --branch main
 ```
 
 Cloudflare Pages Git integration can be connected to this repository with build command `npm run build` and build output `out` if automatic deploys on push are needed.
